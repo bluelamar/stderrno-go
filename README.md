@@ -14,7 +14,7 @@ This way higher level components can check for specific standardized errors with
 
 Example:
 ```
-    f, err := os.OpenFile(fname, os.O_RDONLY, 0)
+	f, err := os.OpenFile(fname, os.O_RDONLY, 0)
 	if err != nil {
 		log.Printf("openFile returns error=%v\n", err)
 
@@ -24,7 +24,7 @@ Example:
 
 Example:
 ```
-    resp, err := http.Get(url)
+	resp, err := http.Get(url)
 	if err != nil {
 		log.Printf("http.Get returns error=%v\n", err)
 
