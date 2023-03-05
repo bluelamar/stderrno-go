@@ -16,6 +16,7 @@ package stderrno
 
 import (
 	"fmt"
+	"strings"
 )
 
 type StdErrorNo struct {
@@ -23,13 +24,22 @@ type StdErrorNo struct {
 	Code int
 }
 
-func NewStdErrorNo(msg string, errno int) StdErrorNo {
-	return StdErrorNo{
+func NewStdErrorNo(msg string, errno int) error {
+	e := &StdErrorNo{
 		Msg:  msg,
 		Code: errno,
 	}
+
+	return e
 }
 
 func (e *StdErrorNo) Error() string {
 	return fmt.Sprintf("%s - errno[%d]", e.Msg, e.Code)
+}
+
+func (e *StdErrorNo) Is(err error) bool {
+	errStr := err.Error()
+	stdErrStr := e.Error()
+
+	return strings.Contains(errStr, stdErrStr)
 }
