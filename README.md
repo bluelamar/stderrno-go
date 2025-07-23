@@ -9,6 +9,8 @@ This is usually done by hiding the implementations of lower level components beh
 Those components that wrap underlying systems can then return known errors mapped from the internal system errors.
 This way higher level components can check for specific standardized errors without having to know the internal implementation and its errors.
 
+NOTE: All errors are lower case strings as best practice to represent **golang** errors.
+
 
 ## Examples
 
@@ -62,7 +64,7 @@ Here are some of the errors that can be returned by S3 as an HTTP 403.
 The underlying component of your system could return an EPERM wrapped error.
 Example:
 ```
-fmt.Errorf("AccountProblem: %w", stderrno.EPERM)
+fmt.Errorf("accountproblem: %w", stderrno.EPERM)
 ```
 
 
